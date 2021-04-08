@@ -17,6 +17,10 @@ def getprize(string):
     if prizeint % 7 == 0:
         prize += 3
     for i in prizestring:
+        if i == 'f':
+            prize += 1
+        if i == 'q':
+            prize += 1
         for d in prizestring:
             if i == d:
                 prize += 1
