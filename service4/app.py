@@ -4,11 +4,11 @@ import string
 
 app = Flask(__name__)
 
-@app.route('/getprize/<string>', methods=['POST'])
-def getprize(string):
+@app.route('/getprize/<account>', methods=['POST'])
+def getprize(account):
     prize = 0
-    prizestring = string[0:5]
-    prizeint = int(string[5:10])
+    prizestring = account[0:5]
+    prizeint = int(account[5:10])
 
     if prizeint % 10 == 0:
         prize += 1
