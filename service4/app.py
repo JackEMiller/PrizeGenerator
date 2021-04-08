@@ -7,8 +7,8 @@ app = Flask(__name__)
 @app.route('/getprize/<string>', methods=['POST'])
 def getprize(string):
     prize = 0
-    prizestring = prize[0:4]
-    prizeint = int(prize[5:9])
+    prizestring = string[0:4]
+    prizeint = int(string[5:9])
 
     if prizeint > 5000:
         prize += 1
