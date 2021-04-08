@@ -10,8 +10,12 @@ def getprize(string):
     prizestring = string[0:5]
     prizeint = int(string[5:10])
 
-    if prizeint > 5000:
+    if prizeint % 10 == 0:
         prize += 1
+    if prizeint % 3 == 0:
+        prize += 2
+    if prizeint % 7 == 0:
+        prize += 3
     for i in prizestring:
         for d in prizestring:
             if i == d:
