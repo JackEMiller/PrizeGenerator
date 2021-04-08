@@ -5,8 +5,9 @@
     <title>Prize Generator</title>
 </head>
 <body>
-    <button type="submit "name="mainbutton"> Click here to generate the account and see what prize is given </button>
-
+    <form name="prize"  method="POST">
+        <button type="submit" name="submitbutton" value="prizegiven">click here to see what prize is given</button>
+    </form>
     <p> Your account string is: {{ prizestring }} </p>
     <p> Your account number is: {{ prizeint }} </p>
     <p> Your prize is: {{ prize }} </p>
