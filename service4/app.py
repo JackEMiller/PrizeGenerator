@@ -8,7 +8,7 @@ app = Flask(__name__)
 def getprize(string):
     prize = 0
     prizestring = string[0:5]
-    prizeint = int(string[4:9])
+    prizeint = int(string[5:10])
 
     if prizeint > 5000:
         prize += 1
