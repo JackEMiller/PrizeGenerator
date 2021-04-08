@@ -4,7 +4,7 @@ import string
 
 app = Flask(__name__)
 
-@app.route('/getprize/<string>', methods='POST')
+@app.route('/getprize/<string>', methods=['POST'])
 def getprize(string):
     prize = 0
     prizestring = prize[0:4]

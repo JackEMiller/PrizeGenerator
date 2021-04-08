@@ -4,7 +4,7 @@ import string
 
 app = Flask(__name__)
 
-@app.route('/createnumber', methods='GET')
+@app.route('/createnumber', methods=['GET'])
 def createnumber():
     rndstring = str(random.randint(0,99999))
     return rndstring

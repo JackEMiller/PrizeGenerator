@@ -4,7 +4,7 @@ import string
 
 app = Flask(__name__)
 
-@app.route('/createletters', methods='GET')
+@app.route('/createletters', methods=['GET'])
 def createletters():
     letters = string.ascii_lowercase
     rndstring = ''.join(random.choice(letters) for i in range(5))
