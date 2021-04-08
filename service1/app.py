@@ -8,9 +8,9 @@ app = Flask(__name__)
 @app.route('/', methods=['GET','POST'])
 def index():
     if request.method == 'POST':
-        responsea = str(requests.get('http://service2/createletters'))
-        responseb = str(requests.get('http://service3/createnumber'))
-        responsec = str(requests.post('http://service4/getprize/'+ responseb + responsea))
+        responsea = str(requests.get('http://service2_1/createletters'))
+        responseb = str(requests.get('http://service3_1/createnumber'))
+        responsec = str(requests.post('http://service4_1/getprize/'+ responseb + responsea))
         return render_template('index.html', prizestring = responsea, prizeint = responseb , prize = responsec )
     else:
         return render_template('index.html', prizestring = 'empty', prizeint = 'empty', prize = 'empty' )
