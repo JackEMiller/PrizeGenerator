@@ -29,7 +29,10 @@ pipeline{
 
             }
             stage('deploy to swarm'){
-                
+                steps{
+                    sh ''
+                }
+
             }
         }
 }
