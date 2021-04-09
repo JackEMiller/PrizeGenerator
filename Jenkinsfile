@@ -24,6 +24,7 @@ pipeline{
             }
             stage('Configure VMs'){
                 steps{
+                    sh 'ansible --version'
                     sh 'ansible-playbook -i inventory.yaml playbook.yaml'
                 }
 
