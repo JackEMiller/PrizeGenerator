@@ -1,8 +1,20 @@
 all:
-  hosts:
-    manager:
-      users:
-        - username: jenkins
-        - username: jmill
-        - username: jmiller2612
-        
+  children:
+    loadbalancers:
+      hosts:
+        nginx:
+    managers:
+      hosts:
+        docker-master:
+    workers:
+      hosts:
+        docker-worker1:
+        docker-worker2:
+  vars: 
+    ansible_user: jmill
+    ansible_ssh_private_key_file: "/home/jmill/.ssh/ansible_id_rsa"
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    users:
+      - username: jenkins
+      - username: jmill
+      - username: jmiller2612

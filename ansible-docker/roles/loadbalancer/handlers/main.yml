@@ -1,0 +1,7 @@
+---
+# handlers file for loadbalancer
+- name: reload nginx
+  become: true
+  service:
+    name: nginx
+    state: reloaded
