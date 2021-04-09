@@ -11,14 +11,23 @@ pipeline{
                     sh "python3 -m pytest tests --cov=service1 --cov=service2 --cov=service3 --cov=service4"
                 }
             }
-            stage('Build'){
+            stage('Build images'){
                 steps{
                     sh "docker-compose build"
                 }
             }
-            stage('Push'){
+            stage('Push images to dockerhub'){
+                steps{
+                    sh ''
+                }
 
             }
-            stage('Deploy')
+            stage('Configure VMs'){
+                steps{
+                    sh 'ansible-playbook -i inventory.yaml playbook.yaml'
+                }
+
+            }
+            stage('deploy to swarm')
         }
 }
