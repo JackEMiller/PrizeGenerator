@@ -1,0 +1,8 @@
+all:
+  hosts:
+    manager:
+      users:
+        - username: jenkins
+        - username: jmill
+        - username: jmiller2612
+        
