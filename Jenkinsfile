@@ -24,8 +24,8 @@ pipeline{
             }
             stage('Configure VMs'){
                 steps{
-                    sh 'ansible --version'
-                    sh 'ansible-playbook -i inventory.yaml playbook.yaml'
+                    sh ''
+                    sh '/home/jenkins/.local/bin/ansible-playbook -i inventory.yaml playbook.yaml'
                 }
 
             }
