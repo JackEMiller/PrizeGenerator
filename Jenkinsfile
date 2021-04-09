@@ -3,7 +3,7 @@ pipeline{
         stages{
             stage('Test'){
                 steps{
-                    sh "pytest tests --cov=service1 --cov=service2 --cov=service3 --cov=service4"
+                    bash "python3 -m pytest tests --cov=service1 --cov=service2 --cov=service3 --cov=service4"
                 }
             }
             stage('Build'){
