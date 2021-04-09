@@ -28,6 +28,8 @@ pipeline{
                 }
 
             }
-            stage('deploy to swarm')
+            stage('deploy to swarm'){
+                
+            }
         }
 }
