@@ -13,6 +13,7 @@ pipeline{
             }
             stage('Build images'){
                 steps{
+                    sh "ls -a"
                     sh "docker-compose build"
                 }
             }
