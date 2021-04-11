@@ -2,10 +2,12 @@ scp dockerstack-compose.yaml jenkins@docker-master:docker-compose.yaml
 scp stackdeploy.sh jenkins@docker-master:stackdeploy.sh
 rm databaseuri.txt
 touch databaseuri.txt
+echo $DATABASEURI
 echo $DATABASEURI >> databaseuri.txt
 cat databaseuri.txt
 scp databaseuri.txt jenkins@docker-master:databaseuri.txt
 ssh jenkins@docker-master << EOF
+    echo $DATABASEURI
     export DATABASEURI=$DATABASEURI
     sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW
     sudo docker pull jmiller2612/prizepipeline_service1:1
