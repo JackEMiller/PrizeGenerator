@@ -3,8 +3,8 @@ services:
   service1:
     image: jmiller2612/prizepipeline_service1:1
     ports:
-    - target: 5001
-      published: 5001
+    - target: 5000
+      published: 5000
       protocol: tcp
   service2:
     image: jmiller2612/prizepipeline_service2:1
