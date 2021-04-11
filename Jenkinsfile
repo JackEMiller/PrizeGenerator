@@ -21,18 +21,18 @@ pipeline{
             stage('Build images'){
                 steps{
                     sh ""
-                    sh "docker-compose build"
+                    sh "sudo docker-compose build"
                 }
             }
             stage('Push images to dockerhub'){
                 steps{
                     sh 'sudo usermod -aG docker ${USER}'
                     sh 'sudo su - ${USER}'
-                    sh 'docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_USR'
-                    sh 'docker push jmiller2612/prizepipeline_service1'
-                    sh 'docker push jmiller2612/prizepipeline_service2'
-                    sh 'docker push jmiller2612/prizepipeline_service3'
-                    sh 'docker push jmiller2612/prizepipeline_service4'
+                    sh 'sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_USR'
+                    sh 'sudo docker push jmiller2612/prizepipeline_service1'
+                    sh 'sudo docker push jmiller2612/prizepipeline_service2'
+                    sh 'sudo docker push jmiller2612/prizepipeline_service3'
+                    sh 'sudo docker push jmiller2612/prizepipeline_service4'
                 }
 
             }
