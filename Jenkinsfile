@@ -29,7 +29,7 @@ pipeline{
                     sh 'sudo docker images -a'
                     sh 'sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
                     sh 'IMAGE_ID=$(sudo docker images --filter=reference=prizepipeline_service1 --format "{{.ID}}")'
-                    sh 'sudo docker push jmiller2612/$IMAGE_ID:latest'
+                    sh 'sudo docker push localhost:5001/jmiller2612/$IMAGE_ID:latest'
                     sh 'IMAGE_ID=$(sudo docker images --filter=reference=prizepipeline_service2 --format "{{.ID}}")'
                     sh 'sudo docker push localhost:5002/jmiller2612/$IMAGE_ID:latest'
                     sh 'IMAGE_ID=$(sudo docker images --filter=reference=prizepipeline_service3 --format "{{.ID}}")'
