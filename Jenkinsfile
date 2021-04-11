@@ -47,6 +47,7 @@ pipeline{
                 steps{
                     sh 'scp dockerstack-compose.yaml jenkins@docker-master:docker-compose.yaml'
                     sh 'scp stackdeploy.sh jenkins@docker-master:stackdeploy.sh'
+                    sh 'rm databaseuri.txt'
                     sh 'touch databaseuri.txt'
                     sh 'echo $DATABASEURI >> databaseuri.txt'
                     sh 'cat databaseuri.txt'
