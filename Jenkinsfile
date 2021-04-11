@@ -47,7 +47,7 @@ pipeline{
                 steps{
                     sh 'scp dockerstack-compose.yaml jenkins@docker-master:docker-compose.yaml'
                     sh 'scp stackdeploy.sh jenkins@docker-master:stackdeploy.sh'
-                    sh 'ssh -i home/jenkins/.ssh/id_rsa docker-master'
+                    sh 'ssh jenkins@docker-master'
                 }
 
             }
