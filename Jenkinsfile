@@ -24,7 +24,7 @@ pipeline{
             }
             stage('Push images to dockerhub'){
                 steps{
-                    sh 'docker login --username=$DOCKERHUB_USR --password=DOCKERHUB_USR'
+                    sh 'docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_USR'
                     sh 'docker push service1'
                     sh 'docker push service2'
                     sh 'docker push service3'
