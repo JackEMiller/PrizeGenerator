@@ -41,14 +41,14 @@ pipeline{
             }
             stage('Configure VMs'){
                 steps{
-                    sh ''
                     sh '/home/jenkins/.local/bin/ansible-playbook -i ansible-docker/inventory.yaml ansible-docker/playbook.yaml'
                 }
 
             }
             stage('deploy to swarm'){
                 steps{
-                    sh ''
+                    sh 'ssh docker-master /home/jenkins/.ssh/id_rsa'
+                    sh 'sudo docker ps'
                 }
 
             }
