@@ -12,6 +12,7 @@ pipeline{
             }
             stage('Test'){
                 steps{
+                    sh 'echo $DATABASEURI '
                     sh "python3 -m pytest tests --cov=service1 --cov=service2 --cov=service3 --cov=service4"
                 }
             }
