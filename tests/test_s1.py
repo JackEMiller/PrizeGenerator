@@ -1,28 +1,28 @@
 from flask_testing import TestCase
 from flask import url_for
 from flask import Flask
-from PrizeGenerator import service1
+from service1.app import app, Account, db
 import os
 
 
 class TestBase(TestCase):
 
     def create_app(self):
-        service1.app.app.config.update(SQLALCHEMY_DATABASE_URI=os.getenv('DATABASEURI'),
+        app.config.update(SQLALCHEMY_DATABASE_URI=os.getenv('DATABASEURI'),
                 SECRET_KEY='TEST_SECRET_KEY',
                 DEBUG=True,
                 WTF_CSRF_ENABLED=False)
-        return app.app
+        return app
     
     def setUp(self):
-        service1.db.create_all()
+        db.create_all()
         sampleuser = service1.Account(account_string="aaaaa",account_int="11111",prize=10)
-        service1.db.session.add(sampleuser)
-        service1.db.session.commit()
+        db.session.add(sampleuser)
+        db.session.commit()
 
     def tearDown(self):
-        service1.db.session.remove()
-        service1.db.drop_all()
+        db.session.remove()
+        db.drop_all()
 
 
 class TestViews(TestBase):
