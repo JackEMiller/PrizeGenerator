@@ -1,7 +1,7 @@
 from flask_testing import TestCase
 from flask import url_for
 from flask import Flask
-from service1 import app, db, Account
+from service1 import app, Account
 import os
 
 
@@ -15,14 +15,14 @@ class TestBase(TestCase):
         return app.app
     
     def setUp(self):
-        db.create_all()
+        service1.db.create_all()
         sampleuser = Users(account_string="aaaaa",account_int="11111",prize=10)
-        db.session.add(sampleuser)
-        db.session.commit()
+        service1.db.session.add(sampleuser)
+        service1.db.session.commit()
 
     def tearDown(self):
-        db.session.remove()
-        db.drop_all()
+        service1.db.session.remove()
+        service1.db.drop_all()
 
 
 class TestViews(TestBase):
