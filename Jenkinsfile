@@ -20,13 +20,11 @@ pipeline{
             }
             stage('Build images'){
                 steps{
-                    sh ""
                     sh "sudo docker-compose build"
                 }
             }
             stage('Push images to dockerhub'){
                 steps{
-                    sh 'sudo docker images -a'
                     sh 'sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
                     sh 'sudo docker tag prizepipeline_service1 jmiller2612/prizepipeline_service1:1'
                     sh 'sudo docker tag prizepipeline_service2 jmiller2612/prizepipeline_service2:1'
@@ -47,14 +45,14 @@ pipeline{
             }
             stage('deploy to swarm'){
                 steps{
-                    bash 'ls -a'
-                    bash 'ls -a ..'
-                    bash 'ls -a ../..'
-                    bash 'ls -a ../../..'
-                    bash 'ls -a ../../../.ssh'
-                    bash 'cat ../../../.ssh/id_rsa'
-                    bash 'ssh docker-master ../../../.ssh/id_rsa'
-                    bash 'sudo docker ps'
+                    sh 'ls -a'
+                    sh 'ls -a ..'
+                    sh 'ls -a ../..'
+                    sh 'ls -a ../../..'
+                    sh 'ls -a ../../../.ssh'
+                    sh 'cat ../../../.ssh/id_rsa'
+                    sh 'ssh docker-master /home/jenkins/.ssh/id_rsa'
+                    sh 'sudo docker ps'
                 }
 
             }
