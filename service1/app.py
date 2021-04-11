@@ -19,6 +19,8 @@ db.create_all()
 
 def addToDB(accountstring,accountint,accountprize):
     account = Account(account_string = accountstring, account_int = accountint, prize = accountprize)
+    db.session.add(account)
+    db.session.commit()
     return
 
 
