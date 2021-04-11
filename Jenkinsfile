@@ -20,6 +20,7 @@ pipeline{
             }
             stage('Build images'){
                 steps{
+                    sh "export DB_URI=$DATABASE_URI"
                     sh "sudo docker-compose config"
                     sh "sudo docker-compose build"
                 }
