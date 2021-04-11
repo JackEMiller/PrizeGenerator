@@ -33,9 +33,9 @@ pipeline{
                     sh 'sudo docker tag prizepipeline_service3 jmiller2612/prizepipeline_service3:1'
                     sh 'sudo docker tag prizepipeline_service4 jmiller2612/prizepipeline_service4:1'
                     sh 'sudo docker push jmiller2612/prizepipeline_service1:1'
-                    sh 'sudo docker push jmiller2612/prizepipeline_service1:2'
-                    sh 'sudo docker push jmiller2612/prizepipeline_service1:3'
-                    sh 'sudo docker push jmiller2612/prizepipeline_service1:4'
+                    sh 'sudo docker push jmiller2612/prizepipeline_service2:1'
+                    sh 'sudo docker push jmiller2612/prizepipeline_service3:1'
+                    sh 'sudo docker push jmiller2612/prizepipeline_service4:1'
                 }
 
             }
