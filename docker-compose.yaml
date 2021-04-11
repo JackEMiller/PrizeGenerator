@@ -3,7 +3,7 @@ services:
   service1:
     build: ./service1
     environment:
-      DATABASEURI: ${DATABASEURI}
+      DATABASEURI: ${DATABASE_URI}
     ports:
     - target: 5000
       published: 5000
