@@ -45,14 +45,15 @@ pipeline{
             }
             stage('deploy to swarm'){
                 steps{
-                    sh 'ls -a'
-                    sh 'ls -a ..'
-                    sh 'ls -a ../..'
-                    sh 'ls -a ../../..'
-                    sh 'ls -a ../../../.ssh'
-                    sh 'cat ../../../.ssh/id_rsa'
+                    sh 'scp docker-compose.yaml jenkins@docker-master:docker-compose.yaml'
                     sh 'ssh -i home/jenkins/.ssh/id_rsa docker-master'
-                    sh 'sudo docker ps'
+                    sh 'sudo docker login sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
+                    sh 'sudo docker pull jmiller2612/prizepipeline_service1:1'
+                    sh 'sudo docker pull jmiller2612/prizepipeline_service2:1'
+                    sh 'sudo docker pull jmiller2612/prizepipeline_service3:1'
+                    sh 'sudo docker pull jmiller2612/prizepipeline_service4:1'
+                    sh 'sudo docker stack deploy --docker-compose.yaml prizegeneratorstack'
+
                 }
 
             }
