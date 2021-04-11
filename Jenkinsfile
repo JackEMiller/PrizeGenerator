@@ -47,6 +47,7 @@ pipeline{
                 steps{
                     sh 'scp dockerstack-compose.yaml jenkins@docker-master:docker-compose.yaml'
                     sh 'ssh -i home/jenkins/.ssh/id_rsa docker-master'
+                    sh 'ls -a'
                     sh 'sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
                     sh 'sudo docker pull jmiller2612/prizepipeline_service1:1'
                     sh 'sudo docker pull jmiller2612/prizepipeline_service2:1'
