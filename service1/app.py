@@ -9,7 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASEURI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-class Account(db.model):
+class Account(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     account_string = db.Column(db.String(30), nullable=False)
     account_int = db.Column(db.String(30), nullable=False)
