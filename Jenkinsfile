@@ -52,7 +52,7 @@ pipeline{
                     sh 'sudo docker pull jmiller2612/prizepipeline_service2:1'
                     sh 'sudo docker pull jmiller2612/prizepipeline_service3:1'
                     sh 'sudo docker pull jmiller2612/prizepipeline_service4:1'
-                    sh 'sudo docker stack deploy --docker-compose.yaml prizegeneratorstack'
+                    sh 'sudo docker stack deploy --compose-file docker-compose.yaml prizegeneratorstack'
 
                 }
 
