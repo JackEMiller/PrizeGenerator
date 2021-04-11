@@ -47,7 +47,7 @@ pipeline{
             }
             stage('deploy to swarm'){
                 steps{
-                    sh 'ssh docker-master /home/jenkins/.ssh/id_rsa'
+                    sh 'ssh docker-master ../home/jenkins/.ssh/id_rsa'
                     sh 'sudo docker ps'
                 }
 
