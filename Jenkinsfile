@@ -23,7 +23,7 @@ pipeline{
             stage('Build images'){
                 steps{
                     sh "touch env.env"
-                    sh "echo DATABASE_URI=$DATABASEURI >> env.env"
+                    sh "echo DATABASE_URI=$DATABASE_URI >> env.env"
                     sh "sudo docker-compose config"
                     sh "sudo docker-compose --env-file env.env build"
                 }
