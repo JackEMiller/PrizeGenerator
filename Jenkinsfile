@@ -26,13 +26,12 @@ pipeline{
             }
             stage('Push images to dockerhub'){
                 steps{
-                    sh 'sudo usermod -aG docker ${USER}'
-                    sh 'sudo su - ${USER}'
+                    sh 'sudo docker images -a'
                     sh 'sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
-                    sh 'sudo docker push jmiller2612/prizepipeline_service1'
-                    sh 'sudo docker push jmiller2612/prizepipeline_service2'
-                    sh 'sudo docker push jmiller2612/prizepipeline_service3'
-                    sh 'sudo docker push jmiller2612/prizepipeline_service4'
+                    sh 'sudo docker push jmiller2612/prizepipeline_service1:latest'
+                    sh 'sudo docker push jmiller2612/prizepipeline_service2:latest'
+                    sh 'sudo docker push jmiller2612/prizepipeline_service3:latest'
+                    sh 'sudo docker push jmiller2612/prizepipeline_service4:latest'
                 }
 
             }
