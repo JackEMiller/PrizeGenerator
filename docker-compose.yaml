@@ -2,6 +2,8 @@ version: "3.8"
 services:
   service1:
     build: ./service1
+    environment:
+    - DATABASEURI=${DATABASEURI}
     ports:
     - target: 5000
       published: 5000
