@@ -1,7 +1,7 @@
 from flask_testing import TestCase
 from flask import url_for
 from flask import Flask
-import service1
+from PrizeGenerator import service1
 import os
 
 
