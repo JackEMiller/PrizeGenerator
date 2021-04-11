@@ -47,13 +47,11 @@ pipeline{
                 steps{
                     sh 'scp dockerstack-compose.yaml jenkins@docker-master:docker-compose.yaml'
                     sh 'scp stackdeploy.sh jenkins@docker-master:stackdeploy.sh'
-                    sh 'rm databaseuri.sh'
-                    sh 'touch databaseuri.sh'
-                    sh 'echo "export DATABASEURI = ""$DATABASEURI"" >> databaseuri.sh'
-                    sh 'cat databaseuri.sh'
-                    sh 'ssh jenkins@docker-master rm databaseuri.sh'
-                    sh 'scp databaseuri.sh jenkins@docker-master:databaseuri.sh'
-                    sh 'ssh jenkins@docker-master sh databaseuri.sh'
+                    sh 'touch databaseuri.txt'
+                    sh 'echo $DATABASEURI >> databaseuri.txt'
+                    sh 'cat databaseuri.txt'
+                    sh 'scp databaseuri.txt jenkins@docker-master:databaseuri.txt'
+                    sh 'ssh jenkins@docker-master export DATABASEURI=$(cat databaseuri.txt)'
                     sh 'ssh jenkins@docker-master sh stackdeploy.sh'
                 }
 
