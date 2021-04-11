@@ -11,6 +11,9 @@ pipeline{
                     sh 'sudo usermod -aG docker ${USER}'
                     sh 'sudo su - ${USER}'
                     sh 'ls -a'
+                    sh 'ls -a ../'
+                    sh 'ls -a ../../'
+                    ah 'ls -s ../../../'
 
                 }
             }
