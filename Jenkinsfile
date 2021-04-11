@@ -45,7 +45,7 @@ pipeline{
             }
             stage('deploy to swarm'){
                 steps{
-                    sh 'scp docker-compose.yaml jenkins@docker-master:docker-compose.yaml'
+                    sh 'scp dockerstack-compose.yaml jenkins@docker-master:docker-compose.yaml'
                     sh 'ssh -i home/jenkins/.ssh/id_rsa docker-master'
                     sh 'docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
                     sh 'docker pull jmiller2612/prizepipeline_service1:1'
