@@ -1,5 +1,9 @@
 pipeline{
         agent any
+        environment{
+            DATABASEURI = credentials("DATABASEURI")
+            DOCKERHUB = credentials("DOCKERHUB")
+        }
         stages{
             stage('Prerequisites'){
                 steps{
