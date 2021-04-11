@@ -1,2 +1,4 @@
-flask
-flask_sqlalchemy
+requests==2.25.1
+Flask==1.1.2
+SQLAlchemy==1.4.7
+PyMySQL==1.0.2
