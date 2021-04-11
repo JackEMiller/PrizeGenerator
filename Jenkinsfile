@@ -28,10 +28,10 @@ pipeline{
                 steps{
                     sh 'sudo docker images -a'
                     sh 'sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
-                    sh 'sudo docker push jmiller2612/prizepipeline_service1:latest'
-                    sh 'sudo docker push jmiller2612/prizepipeline_service2:latest'
-                    sh 'sudo docker push jmiller2612/prizepipeline_service3:latest'
-                    sh 'sudo docker push jmiller2612/prizepipeline_service4:latest'
+                    sh 'sudo docker push localhost:5001/jmiller2612/prizepipeline_service1:latest'
+                    sh 'sudo docker push localhost:5002/jmiller2612/prizepipeline_service2:latest'
+                    sh 'sudo docker push localhost:5003/jmiller2612/prizepipeline_service3:latest'
+                    sh 'sudo docker push localhost:5004/jmiller2612/prizepipeline_service4:latest'
                 }
 
             }
