@@ -46,7 +46,7 @@ pipeline{
             stage('deploy to swarm'){
                 steps{
                     sh 'scp dockerstack-compose.yaml jenkins@docker-master:docker-compose.yaml'
-                    sh 'ssh -i docker-master stackdeploy.sh'
+                    sh 'ssh -i docker-master sh stackdeploy.sh'
                 }
 
             }
