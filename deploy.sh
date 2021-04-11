@@ -7,9 +7,6 @@ echo $DATABASEURI >> databaseuri.txt
 cat databaseuri.txt
 scp databaseuri.txt jenkins@docker-master:databaseuri.txt
 ssh jenkins@docker-master << EOF
-    echo "here"
-    echo $DATABASE_URI
-    export DATABASE_URI=$DATABASE_URI
     sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW
     sudo docker pull jmiller2612/prizepipeline_service1:1
     sudo docker pull jmiller2612/prizepipeline_service2:1
