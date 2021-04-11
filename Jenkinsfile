@@ -17,12 +17,17 @@ pipeline{
             }
             stage('Build images'){
                 steps{
+                    sh ""
                     sh "sudo docker-compose build"
                 }
             }
             stage('Push images to dockerhub'){
                 steps{
-                    sh ''
+                    sh 'docker login --username=${env.DOCKERHUB_USR} --password=${env.DOCKERHUB_USR}'
+                    sh 'docker push service1'
+                    sh 'docker push service2'
+                    sh 'docker push service3'
+                    sh 'docker push service4'
                 }
 
             }
