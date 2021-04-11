@@ -47,14 +47,14 @@ pipeline{
             }
             stage('deploy to swarm'){
                 steps{
-                    sh 'ls -a'
-                    sh 'ls -a ..'
-                    sh 'ls -a ../..'
-                    sh 'ls -a ../../..'
-                    sh 'ls -a ../../../.ssh'
-                    sh 'cat ../../../.ssh/id_rsa'
-                    sh 'ssh docker-master ../../../.ssh/id_rsa'
-                    sh 'sudo docker ps'
+                    bash 'ls -a'
+                    bash 'ls -a ..'
+                    bash 'ls -a ../..'
+                    bash 'ls -a ../../..'
+                    bash 'ls -a ../../../.ssh'
+                    bash 'cat ../../../.ssh/id_rsa'
+                    bash 'ssh docker-master ../../../.ssh/id_rsa'
+                    bash 'sudo docker ps'
                 }
 
             }
