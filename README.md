@@ -1,14 +1,28 @@
-# Club Forum
-A forum for a martial arts club to record members, techniques and details of classes.
+# Prize Generator
+A multi service application to randomly generate a account string and number then award a prize to the account based on some predetermined rules.
+
+An account will add to its prize if:
+
+- the integer part is a multiple of 3, 10 or 7
+- the string part contains a f or q
+- the string part has repeating characters
 
 ## Software Design:
 ### Project management:
+The project uses a sstack configuraiton composed of a front end and back end service.
+
+The front end acts as a single service to provide an interface for the user to communicate with the back end.
+
+The back end consists of three different services:
+- The first service generates the string part of the account
+- the second service generates the integer part of the account
+- the third service generates the prize
+
+The stack is then deployed onto a swarm of virtual machines using docker to manage them.
+
 This project has used Azure boards to manage the tasks performed to build the software:
 
 [![Board Status](https://dev.azure.com/JMiller10074/afdffd25-69bf-4fba-9fbd-056a02328592/29fd3513-e2ad-42c4-bc9e-153b38e4d8d1/_apis/work/boardbadge/4afc58ad-4793-4732-bbd2-9e2219edcea5)](https://dev.azure.com/JMiller10074/afdffd25-69bf-4fba-9fbd-056a02328592/_boards/board/t/29fd3513-e2ad-42c4-bc9e-153b38e4d8d1/Microsoft.RequirementCategory)
-
-A sample cut of the board:
-![boardcut](https://github.com/JackEMiller/ClubForum/blob/main/images/azureb1.PNG?raw=true)
 
 Azure Boards cumulative flow diagram:
 ![boarddiagram](https://github.com/JackEMiller/ClubForum/blob/main/images/workflow.PNG?raw=true)
@@ -41,6 +55,13 @@ The main logic is written in Python
 
 Flask is used to build the web framework of the application
 
+To deploy the application a variety of tools have been used:
+- Ansible is used to configure the virtual machines for deployment ensuring all requirements and connections are met
+- Docker creates the images for each service, containerising them.
+- Using the Docker swarm functionality to deploy across multiple machines
+- Jenkins is used to build the application removing downtime and impact to end users
+- Nginx is used to balance incoming requests between the nodes of he swarm
+
 A Version Control System is used to manage changes to the application and development, this is used with Git in conjuction with GitHub to host. The Dev branch is used to develop the application while Jenkins is linked to the main branch to host the application. To add a new feature or code when completed and tested, it is merged with the main branch. This allows development to happen while the application is live and ensures zero downtime:
 
 ![git](https://github.com/JackEMiller/ClubForum/blob/main/images/merge.PNG?raw=true)
@@ -68,14 +89,19 @@ As shown above a test coverage of 93% has been reached.
 - Jinja
 - Google Chrome
 - Linux
+- Docker
+- Jenkins
+- Nginx
+
 ### References:
 - QA community courseware (only viewable by QA community members)
 - Flask documentation 
 - Flask tutorials
+- Jenkins documentation
+- Docker documentation
 - Google cloud documentaion
 - Dara Oladapo
-
-For a full breakdown please download this presentation:
+- Harry 
 
 ## License:
 This product is licensed under the MIT license
@@ -89,58 +115,4 @@ This product is licensed under the MIT license
 
 ## Current Version 1.0.0
 ### Using the application:
-The application is currently live on link: http://34.121.73.96:5000/
-
-You will see:
-
-![login](https://github.com/JackEMiller/ClubForum/blob/main/images/login.PNG?raw=true)
-
-If you do not have an account click the link to "sign up here"
-
-This will forward you to the signup page where you can create an account. Enter a username and password and click submit. If a red message saying "success" appears navigate back to the log in page and log in.
-
-![signup](https://github.com/JackEMiller/ClubForum/blob/main/images/signup.PNG?raw=true)
-
-This will direct you to the view page. The data for Members and Techniques are shown here along with the input for said tables. To submit data; add entrys to each respective field and press submit.
-
-![view](https://github.com/JackEMiller/ClubForum/blob/main/images/view.PNG?raw=true)
-
-Here we will add a member called "Jack":
-
-![addmember](https://github.com/JackEMiller/ClubForum/blob/main/images/submitmember.PNG?raw=true)
-
-After pressing submit the tables will be updated to show any new data:
-
-![deletemember](https://github.com/JackEMiller/ClubForum/blob/main/images/membertable1.PNG?raw=true)
-
-The links to the side of each entry on the table are to; delete the entry, update the entry and to view any classes the entry is related to. If we click "update" we will be forwarded to a new page where we can update the users information, in this case we will change "Jack" to "James":
-
-![updatemember](https://github.com/JackEMiller/ClubForum/blob/main/images/memberupdate.PNG?raw=true)
-
-After pressing submit we will be redirected back to the view page where the change is reflected in the Members table:
-
-![updatemember2](https://github.com/JackEMiller/ClubForum/blob/main/images/membertable2.PNG?raw=true)
-
-Now we will add a class, the class form on the rightmost side is used. Select the date and the number of members and techniques to add to this classe, in this case we will choose one for each:
-
-![addclass](https://github.com/JackEMiller/ClubForum/blob/main/images/classinput.PNG?raw=true)
-
-This will take us to a new page where we can select which member and technique to add to the class:
-
-![addclass2](https://github.com/JackEMiller/ClubForum/blob/main/images/classinput2.PNG?raw=true)
-
-After clicking submit we are taken to the view classes page, where the new class is added to the table:
-
-![viewclass2](https://github.com/JackEMiller/ClubForum/blob/main/images/classview.PNG?raw=true)
-
-We will now update the entry and add another technique to the class, the link "update" in the actions column is used. This brings us to the update class page:
-
-![viewclass2](https://github.com/JackEMiller/ClubForum/blob/main/images/classupdate.PNG?raw=true)
-
-To add another row to the technique section click the "Add another technique" link:
-
-![viewclass2](https://github.com/JackEMiller/ClubForum/blob/main/images/classupdate2.PNG?raw=true)
-
-Select another technique to add then click submit. This will redirect us to the view page where the change is reflected in the table:
-
-![viewclass2](https://github.com/JackEMiller/ClubForum/blob/main/images/classupdate3.PNG?raw=true)
+The application is currently live on link: http://35.242.166.72/
