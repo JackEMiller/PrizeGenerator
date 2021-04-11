@@ -1,7 +1,7 @@
 from flask_testing import TestCase
 from flask import url_for
 from flask import Flask
-from service1 import app, Account
+from service1 import app
 import os
 
 
@@ -16,7 +16,7 @@ class TestBase(TestCase):
     
     def setUp(self):
         service1.db.create_all()
-        sampleuser = Users(account_string="aaaaa",account_int="11111",prize=10)
+        sampleuser = service1.Account(account_string="aaaaa",account_int="11111",prize=10)
         service1.db.session.add(sampleuser)
         service1.db.session.commit()
 
