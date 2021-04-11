@@ -17,15 +17,14 @@ pipeline{
             stage('Test'){
                 steps{
                     sh 'sudo echo $DATABASE_URI'
-                    sh "python3 -m pytest tests --cov=service1 --cov=service2 --cov=service3 --cov=service4"
+                    sh 'python3 -m pytest tests --cov=service1 --cov=service2 --cov=service3 --cov=service4'
                 }
             }
             stage('Build images'){
                 steps{
-                    sh "touch env.env"
-                    sh "echo DATABASE_URI=$DATABASE_URI >> env.env"
-                    sh "sudo docker-compose config"
-                    sh "sudo docker-compose --env-file env.env build"
+                    sh 'touch env.env'
+                    sh 'echo DATABASE_URI=$DATABASE_URI >> env.env'
+                    sh 'sudo docker-compose --env-file env.env build'
                 }
             }
             stage('Push images to dockerhub'){
