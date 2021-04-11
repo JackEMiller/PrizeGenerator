@@ -16,7 +16,7 @@ class TestBase(TestCase):
     
     def setUp(self):
         db.create_all()
-        sampleuser = service1.Account(account_string="aaaaa",account_int="11111",prize=10)
+        sampleuser = Account(account_string="aaaaa",account_int="11111",prize=10)
         db.session.add(sampleuser)
         db.session.commit()
 
