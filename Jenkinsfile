@@ -51,7 +51,7 @@ pipeline{
                     sh 'ls -a ../../..'
                     sh 'ls -a ../../../.ssh'
                     sh 'cat ../../../.ssh/id_rsa'
-                    sh 'ssh docker-master /home/jenkins/.ssh/id_rsa'
+                    sh 'ssh -i home/jenkins/.ssh/id_rsa docker-master'
                     sh 'sudo docker ps'
                 }
 
