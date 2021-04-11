@@ -47,16 +47,7 @@ pipeline{
             }
             stage('deploy to swarm'){
                 steps{
-                    sh 'scp dockerstack-compose.yaml jenkins@docker-master:docker-compose.yaml'
-                    sh 'scp stackdeploy.sh jenkins@docker-master:stackdeploy.sh'
-                    sh 'rm databaseuri.txt'
-                    sh 'touch databaseuri.txt'
-                    sh 'echo $DATABASEURI >> databaseuri.txt'
-                    sh 'cat databaseuri.txt'
-                    sh 'scp databaseuri.txt jenkins@docker-master:databaseuri.txt'
-                    sh 'ssh jenkins@docker-master export DATABASEURI=$(cat databaseuri.txt)'
-                    sh 'ssh jenkins@docker-master echo $DATABASEURI'
-                    sh 'ssh jenkins@docker-master sh stackdeploy.sh'
+                    sh 'bash deploy.sh'
                 }
 
             }
