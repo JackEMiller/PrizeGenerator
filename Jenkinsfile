@@ -19,7 +19,7 @@ pipeline{
             stage('Build images'){
                 steps{
                     sh ""
-                    sh "sudo docker-compose build"
+                    sh "docker-compose build"
                 }
             }
             stage('Push images to dockerhub'){
