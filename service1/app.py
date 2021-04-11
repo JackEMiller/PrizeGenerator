@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
-import requests. random, string, os
+import requests, random, string, os
 
 
 
