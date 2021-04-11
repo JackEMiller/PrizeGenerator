@@ -47,6 +47,8 @@ pipeline{
             }
             stage('deploy to swarm'){
                 steps{
+                    sh 'ls -a'
+                    sh 'ls -a ..'
                     sh 'ssh docker-master ../.ssh/id_rsa'
                     sh 'sudo docker ps'
                 }
