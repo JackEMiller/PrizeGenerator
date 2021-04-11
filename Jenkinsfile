@@ -52,6 +52,7 @@ pipeline{
                     sh 'ls -a ../..'
                     sh 'ls -a ../../..'
                     sh 'ls -a ../../../.ssh'
+                    sh 'cat ../../../.ssh/id_rsa'
                     sh 'ssh docker-master ../../../.ssh/id_rsa'
                     sh 'sudo docker ps'
                 }
