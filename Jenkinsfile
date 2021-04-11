@@ -24,7 +24,6 @@ pipeline{
             }
             stage('Push images to dockerhub'){
                 steps{
-                    sh 'sudo groupadd docker'
                     sh 'sudo usermod -aG docker $(whoami)'
                     sh 'sudo su - ${USER}'
                     sh 'docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_USR'
