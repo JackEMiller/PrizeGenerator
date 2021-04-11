@@ -47,12 +47,12 @@ pipeline{
                 steps{
                     sh 'scp dockerstack-compose.yaml jenkins@docker-master:docker-compose.yaml'
                     sh 'ssh -i home/jenkins/.ssh/id_rsa docker-master'
-                    sh 'docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
-                    sh 'docker pull jmiller2612/prizepipeline_service1:1'
-                    sh 'docker pull jmiller2612/prizepipeline_service2:1'
-                    sh 'docker pull jmiller2612/prizepipeline_service3:1'
-                    sh 'docker pull jmiller2612/prizepipeline_service4:1'
-                    sh 'docker stack deploy --compose-file dockerstack-compose.yaml prizegeneratorstack'
+                    sh 'sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
+                    sh 'sudo docker pull jmiller2612/prizepipeline_service1:1'
+                    sh 'sudo docker pull jmiller2612/prizepipeline_service2:1'
+                    sh 'sudo docker pull jmiller2612/prizepipeline_service3:1'
+                    sh 'sudo docker pull jmiller2612/prizepipeline_service4:1'
+                    sh 'sudo docker stack deploy --compose-file dockerstack-compose.yaml prizegeneratorstack'
 
                 }
 
