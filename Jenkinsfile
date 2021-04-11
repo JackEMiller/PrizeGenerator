@@ -8,6 +8,8 @@ pipeline{
             stage('Prerequisites'){
                 steps{
                     sh 'pip3 install pymysql'
+                    sh 'sudo usermod -aG docker ${USER}'
+                    sh 'sudo su - ${USER}'
                 }
             }
             stage('Test'){
