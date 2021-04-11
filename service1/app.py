@@ -5,7 +5,7 @@ import requests, random, string, os
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASEURI')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@35.189.85.148/db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
