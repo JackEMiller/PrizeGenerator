@@ -7,6 +7,7 @@ echo $DATABASEURI >> databaseuri.txt
 cat databaseuri.txt
 scp databaseuri.txt jenkins@docker-master:databaseuri.txt
 ssh jenkins@docker-master << EOF
+    echo "here"
     echo $DATABASEURI
     export DATABASEURI=$DATABASEURI
     sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW
