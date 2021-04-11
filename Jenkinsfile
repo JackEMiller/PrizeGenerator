@@ -28,7 +28,7 @@ pipeline{
                 steps{
                     sh 'sudo usermod -aG docker ${USER}'
                     sh 'sudo su - ${USER}'
-                    sh 'sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_USR'
+                    sh 'sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
                     sh 'sudo docker push jmiller2612/prizepipeline_service1'
                     sh 'sudo docker push jmiller2612/prizepipeline_service2'
                     sh 'sudo docker push jmiller2612/prizepipeline_service3'
