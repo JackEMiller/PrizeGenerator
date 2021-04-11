@@ -7,7 +7,7 @@ pipeline{
         stages{
             stage('Prerequisites'){
                 steps{
-                    sh 'pip3 install flask-testing'
+                    sh 'pip3 install -r requirements.txt'
                 }
             }
             stage('Test'){
