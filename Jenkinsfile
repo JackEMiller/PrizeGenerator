@@ -1,13 +1,13 @@
 pipeline{
         agent any
         environment{
-            DATABASEURI = credentials("DATABASEURI")
+            DATABASE_URI = credentials("DATABASE_URI")
             DOCKERHUB = credentials("DOCKERHUB")
         }
         stages{
             stage('Prerequisites'){
                 steps{
-                    sh 'export DATABASEURI=$DATABASEURI'
+                    sh 'export DATABASE_URI=$DATABASE_URI'
                     sh 'pip3 install pymysql'
                     sh 'sudo usermod -aG docker ${USER}'
                     sh 'sudo su - ${USER}'
@@ -15,8 +15,8 @@ pipeline{
             }
             stage('Test'){
                 steps{
-                    sh 'echo $DATABASEURI'
-                    sh 'sudo echo $DATABASEURI'
+                    sh 'echo $DATABASE_URI'
+                    sh 'sudo echo $DATABASE_URI'
                     sh "python3 -m pytest tests --cov=service1 --cov=service2 --cov=service3 --cov=service4"
                 }
             }
