@@ -10,6 +10,8 @@ pipeline{
                     sh 'pip3 install pymysql'
                     sh 'sudo usermod -aG docker ${USER}'
                     sh 'sudo su - ${USER}'
+                    sh 'ls -a'
+
                 }
             }
             stage('Test'){
@@ -20,9 +22,10 @@ pipeline{
             }
             stage('Build images'){
                 steps{
-                    sh "export DB_URI=$DATABASE_URI"
+                    sh "touch env.env"
+                    sh "echo DATABASE_URI=$DATABASEURI >> env.env"
                     sh "sudo docker-compose config"
-                    sh "sudo docker-compose build"
+                    sh "sudo docker-compose --env-file env.env build"
                 }
             }
             stage('Push images to dockerhub'){
