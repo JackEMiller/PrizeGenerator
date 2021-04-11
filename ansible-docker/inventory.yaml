@@ -12,7 +12,7 @@ all:
         docker-worker2:
   vars: 
     ansible_user: jmill
-    ansible_ssh_private_key_file: "/home/jmill/.ssh/ansible_id_rsa"
+    ansible_ssh_private_key_file: "/home/jenkins/.ssh/id_rsa"
     ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
     users:
       - username: jenkins
