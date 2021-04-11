@@ -49,8 +49,8 @@ pipeline{
                     sh 'scp stackdeploy.sh jenkins@docker-master:stackdeploy.sh'
                     sh 'touch databaseuri.txt'
                     sh 'echo "export DATABASEURI="$DATABASEURI >> databaseuri.sh'
-                    sh 'cat databaseuri.txt'
-                    sh 'scp databaseuri.txt jenkins@docker-master:databaseuri.txt'
+                    sh 'cat databaseuri.sh'
+                    sh 'scp databaseuri.sh jenkins@docker-master:databaseuri.sh'
                     sh 'ssh jenkins@docker-master sh databaseuri.sh'
                     sh 'ssh jenkins@docker-master sh stackdeploy.sh'
                 }
