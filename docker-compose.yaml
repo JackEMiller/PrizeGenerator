@@ -2,12 +2,12 @@ version: "3.8"
 services:
   service1:
     build: ./service1
-    environment:
-      DATABASE_URI: ${DATABASE_URI}
     ports:
     - target: 5000
       published: 5000
       protocol: tcp
+    environment:
+      DATABASE_URI: ${DATABASE_URI}
   service2:
     build: ./service2
     ports:
