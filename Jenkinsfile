@@ -7,6 +7,7 @@ pipeline{
         stages{
             stage('Prerequisites'){
                 steps{
+                    sh 'export DATABASEURI = $DATABASEURI'
                     sh 'pip3 install pymysql'
                     sh 'sudo usermod -aG docker ${USER}'
                     sh 'sudo su - ${USER}'
