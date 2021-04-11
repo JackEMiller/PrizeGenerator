@@ -3,4 +3,5 @@ WORKDIR /app
 COPY . .
 RUN pip install -r requirements.txt
 EXPOSE 5000
+ENV DATABASEURI = $DATABASEURI
 ENTRYPOINT ["python", "app.py"]
