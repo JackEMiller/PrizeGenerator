@@ -26,6 +26,7 @@ def getprize(account):
                 prize += 1
 
     prize = prize*15
+    prize = prize*2
 
     return str(prize)
 
