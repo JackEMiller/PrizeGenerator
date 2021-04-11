@@ -7,12 +7,12 @@ pipeline{
         stages{
             stage('Prerequisites'){
                 steps{
-                    sh 'pip3 install -r requirements.txt'
+                    sh 'pip3 install pymysql'
                 }
             }
             stage('Test'){
                 steps{
-                    sh 'echo $DATABASEURI '
+                    sh 'echo $DATABASEURI'
                     sh "python3 -m pytest tests --cov=service1 --cov=service2 --cov=service3 --cov=service4"
                 }
             }
