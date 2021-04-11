@@ -11,6 +11,25 @@
     <p> Your account string is: {{ prizestring }} </p>
     <p> Your account number is: {{ prizeint }} </p>
     <p> Your prize is: {{ prize }} </p>
-
+    {% if accountlist|length < 1 %}
+    <h4 style="text-align: center">empty table<a href="/view/0">add some data</a> </h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Account random letters</th>
+            <th>Account random integers</th>
+            <th>Prize</th>
+        </tr>
+        {% for member in accountlist %}
+            <tr>
+                <td>{{ member.id }}</td>
+                <td>{{ member.account_string }}</td>
+                <td>{{ member.account_int }}</td>
+                <td>{{ member.prize }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
 </body>
 </html>
