@@ -47,6 +47,7 @@ pipeline{
                 steps{
                     sh 'scp dockerstack-compose.yaml jenkins@docker-master:docker-compose.yaml'
                     sh 'scp stackdeploy.sh jenkins@docker-master:stackdeploy.sh'
+                    sh 'ssh -t jenkins@docker-master 'export DATABASEURI='"'$DATABASEURI'"''
                     sh 'ssh jenkins@docker-master sh stackdeploy.sh'
                 }
 
