@@ -102,6 +102,9 @@ As shown above a test coverage of 84% has been reached.
 ## License:
 This product is licensed under the MIT license
 
+## Risk assessment:
+
+![ra](https://github.com/JackEMiller/PrizeGenerator/blob/dev2/images/riskassessment.PNG)
 
 
 ## Current Version 1.0.0
