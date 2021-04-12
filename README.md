@@ -42,6 +42,17 @@ The design uses three nodes in a docker swarm; manager, worker-1 and worker-2, c
 
 Stack configuration:
 The stack consists of a front end, service 1, interacting with several back end services; service 2, 3, 4 and the database:
+![fsm](https://github.com/JackEMiller/PrizeGenerator/blob/dev2/images/servicediagram.PNG)
+
+To build the project we use a pipeline consisting of may stages to verify the applicaiton is built correctly:
+- Declaritive checlout scm. Clones the git repository to the jenkins machine
+- Prerequisites. Installs any prerequisities, new or old, to the jenkins machine
+- Test. tests the application to see if working correctly.
+- Build images. Builds the services into containers ready for deployment.
+- Push. Pushes the images to a repo where the swarm can access them
+- Configure. Ansible will now set up the swarm, installing dependencies and connecting the manager and worker nodes of the swarm
+- Deploy. the images are pulled from the docker hub repo and deployed as a stack to the swarm
+![fsm](https://github.com/JackEMiller/PrizeGenerator/blob/dev2/images/pipeline.PNG)
 
 
 ### Architecture and software tools used:
