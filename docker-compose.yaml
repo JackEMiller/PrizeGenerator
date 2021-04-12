@@ -7,7 +7,7 @@ services:
       published: 5000
       protocol: tcp
     environment:
-      DATABASE_URI: ${DATABASE_URI}
+      - DATABASE_URI=${DATABASE_URI}
   service2:
     build: ./service2
     ports:
