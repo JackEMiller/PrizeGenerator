@@ -28,8 +28,7 @@ pipeline{
             }
             stage('Push images to dockerhub'){
                 steps{
-                    sh '
-                    docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
+                    sh 'sudo docker login --username=$DOCKERHUB_USR --password=$DOCKERHUB_PSW'
                     sh 'sudo docker tag prizepipeline_service1 jmiller2612/prizepipeline_service1:1'
                     sh 'sudo docker tag prizepipeline_service2 jmiller2612/prizepipeline_service2:1'
                     sh 'sudo docker tag prizepipeline_service3 jmiller2612/prizepipeline_service3:1'
