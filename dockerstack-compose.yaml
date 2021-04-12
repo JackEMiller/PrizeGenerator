@@ -7,7 +7,7 @@ services:
       published: 5000
       protocol: tcp
     environment:
-      - DATABASE_URI=${DATABASE_URI}
+      DATABASE_URI: ${DATABASE_URI}
   service2:
     image: jmiller2612/prizepipeline_service2:1
     ports:
