@@ -7,6 +7,8 @@ An account will add to its prize if:
 - the string part contains a f or q
 - the string part has repeating characters
 
+a second implementation that can be swapped out will double the users prize.
+
 ## Software Design:
 ### Project management:
 The project uses a sstack configuraiton composed of a front end and back end service.
@@ -25,29 +27,25 @@ This project has used Azure boards to manage the tasks performed to build the so
 [![Board Status](https://dev.azure.com/JMiller10074/afdffd25-69bf-4fba-9fbd-056a02328592/29fd3513-e2ad-42c4-bc9e-153b38e4d8d1/_apis/work/boardbadge/4afc58ad-4793-4732-bbd2-9e2219edcea5)](https://dev.azure.com/JMiller10074/afdffd25-69bf-4fba-9fbd-056a02328592/_boards/board/t/29fd3513-e2ad-42c4-bc9e-153b38e4d8d1/Microsoft.RequirementCategory)
 
 Azure Boards cumulative flow diagram:
-![boarddiagram](https://github.com/JackEMiller/ClubForum/blob/main/images/workflow.PNG?raw=true)
+![boarddiagram](https://github.com/JackEMiller/PrizeGenerator/blob/dev2/images/workflow.PNG)
 
 For use cases, database design and other graphical documentation Lucid boards was used to build these
 
 Lucid boards has many templates and pre-loaded shapes for quick and easy construction of graphical documentaion, I would highly recommend this.
 ### Design documentation and diagrams
 Database table definitions:
-![dbdef](https://github.com/JackEMiller/ClubForum/blob/main/images/dbdefs.PNG?raw=true)
+![dbdef](https://github.com/JackEMiller/PrizeGenerator/blob/dev2/images/accounttable.PNG)
 
-Database entity relationship diagram:
-As you can see the Members and Techniques tables have a many-many relationship with the Classes table. So two intersection tables have been made.
-![dberd](https://github.com/JackEMiller/ClubForum/blob/main/images/dberd.PNG?raw=true)
+Swarm configuration design:
+The design uses three nodes in a docker swarm; manager, worker-1 and worker-2, connected to an Ngnix load balancer to mediate user traffic
+![fsm](https://github.com/JackEMiller/PrizeGenerator/blob/dev2/images/swarmconfig.PNG)
 
-Use Case:
-Two users will be present, admin and member. A member cannot use the database manipulation functions and can only view data.
-![usecase](https://github.com/JackEMiller/ClubForum/blob/main/images/usecase.PNG?raw=true)
+Stack configuration:
+The stack consists of a front end, service 1, interacting with several back end services; service 2, 3, 4 and the database:
 
-GUI design:
-The design is based on a Finite State Machine. and routes between each state is defined as below:
-![fsm](https://github.com/JackEMiller/ClubForum/blob/main/images/fsm.PNG?raw=true)
 
 ### Architecture and software tools used:
-Google cloud will be used to host the virtual envinronment
+Google cloud will be used to host the virtual envinronments and database
 
 MySQL is used for the database logic and storage
 
@@ -62,15 +60,13 @@ To deploy the application a variety of tools have been used:
 - Jenkins is used to build the application removing downtime and impact to end users
 - Nginx is used to balance incoming requests between the nodes of he swarm
 
-A Version Control System is used to manage changes to the application and development, this is used with Git in conjuction with GitHub to host. The Dev branch is used to develop the application while Jenkins is linked to the main branch to host the application. To add a new feature or code when completed and tested, it is merged with the main branch. This allows development to happen while the application is live and ensures zero downtime:
+A Version Control System is used to manage changes to the application and development, this is used with Git in conjuction with GitHub to host. The Dev branch is used to develop the application while Jenkins is linked to the main branch to host the application. To add a new feature or code when completed and tested, it is merged with the main branch. This allows development to happen while the application is live and ensures zero downtime.
 
-![git](https://github.com/JackEMiller/ClubForum/blob/main/images/merge.PNG?raw=true)
+![git](https://github.com/JackEMiller/PrizeGenerator/blob/dev2/images/pytestcov.PNG)
 
 The PyTest and unit test libraries are used to test the CRUD functions of the application, using white and black box testing methods. The tests have covered all CRUD functions and loading/redirecting of pages:
 
-![tests](https://github.com/JackEMiller/ClubForum/blob/main/images/testcomplete.PNG?raw=true)
-
-As shown above a test coverage of 93% has been reached.
+As shown above a test coverage of 84% has been reached.
 
 ## Other tools and references:
 ### Full list of tools used:
@@ -106,12 +102,7 @@ As shown above a test coverage of 93% has been reached.
 ## License:
 This product is licensed under the MIT license
 
-## Risks involved
-- Anyone can become and admin and edit the database
-- Anyone can access the platform
-- Hosting is done via GCP, if all the credits are spent the application will not be running
-- There is no backup database, if the database is down the application fails
-- VM isn't scaled if more people access it than determined, they will not be able to connect
+
 
 ## Current Version 1.0.0
 ### Using the application:
