@@ -23,7 +23,7 @@ pipeline{
                 steps{
                     sh 'touch env.env'
                     sh 'echo DATABASE_URI=$DATABASE_URI >> env.env'
-                    sh 'sudo docker-compose --build-args DATABASE_URI=$DATABASE_URI'
+                    sh 'sudo docker-compose build --build-args DATABASE_URI=$DATABASE_URI'
                 }
             }
             stage('Push images to dockerhub'){
