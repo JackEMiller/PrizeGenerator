@@ -30,10 +30,10 @@ def index():
         responsea = requests.get('http://service2:5002/createletters').text
         responseb = requests.get('http://service3:5003/createnumber').text
         responsec = requests.post('http://service4:5004/getprize/'+ responsea + responseb).text
-        addToDB(responsea,responseb,responsec)
-        return render_template('index.html', accountlist = accounts, prizestring = responsea, prizeint = responseb , prize = responsec )
+        #addToDB(responsea,responseb,responsec)
+        return render_template('index.html', prizestring = responsea, prizeint = responseb , prize = responsec )
     else:
-        return render_template('index.html', accountlist = accounts, prizestring = 'empty', prizeint = 'empty', prize = 'empty' )
+        return render_template('index.html', prizestring = 'empty', prizeint = 'empty', prize = 'empty' )
 
 
 if __name__ == '__main__':
