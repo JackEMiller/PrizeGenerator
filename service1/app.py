@@ -25,7 +25,7 @@ def addToDB(accountstring,accountint,accountprize):
 
 @app.route('/', methods=['GET','POST'])
 def index():
-    accounts = Account.query.all()
+    #accounts = Account.query.all()
     if request.method == 'POST':
         responsea = requests.get('http://service2:5002/createletters').text
         responseb = requests.get('http://service3:5003/createnumber').text
